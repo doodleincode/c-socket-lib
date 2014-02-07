@@ -6,12 +6,12 @@
  *
  * @author 	Daniel Hong
  * 
- * GNU GENERAL PUBLIC LICENSE Version 2. A LICENSE file should have
- * accompanied this library.
+ * This program is licensed under the GNU GENERAL PUBLIC LICENSE Version 2.
+ * A LICENSE file should have accompanied this program.
  */
 
-#ifndef _DSH_SOCKET_H_
-#define _DSH_SOCKET_H_
+#ifndef _DH_SOCKET_H_
+#define _DH_SOCKET_H_
 
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -139,5 +139,5 @@ Socket *init_socket(int, int);
  */
 void socket_close(Socket *);
 
-#endif /* _DSH_SOCKET_H_ */
+#endif /* _DH_SOCKET_H_ */
 

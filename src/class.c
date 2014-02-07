@@ -3,8 +3,8 @@
  *
  * @author 	Daniel Hong
  * 
- * GNU GENERAL PUBLIC LICENSE Version 2. A LICENSE file should have
- * accompanied this library.
+ * This program is licensed under the GNU GENERAL PUBLIC LICENSE Version 2.
+ * A LICENSE file should have accompanied this program.
  */
  
 #include <stdlib.h>

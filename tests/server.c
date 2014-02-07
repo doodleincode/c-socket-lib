@@ -14,11 +14,19 @@ int main()
     char buff[100];
     int bytes;
     
+    // Instantiate a socket object
     Socket *s = init_socket(AF_INET, SOCK_STREAM);
+    
+    // Bind the socket to IP 127.0.0.1 on port 12345
     s->bind(s, "127.0.0.1", 12345);
+    
+    // Listen and allow up to five queued clients
     s->listen(s, 5);
     
+    // Define a client address structure to get info about the connected client
     ClientAddr client_addr;
+    
+    // Accept clients
     Socket *c = s->accept(s, &client_addr);
     
     printf("Client connected at %s:%d\n", client_addr.ip_addr, client_addr.port);
@@ -30,6 +38,9 @@ int main()
         printf("Sending: %s\n", buff);
     }
     
+    // Destroy the client socket object
     socket_close(c);
+    
+    // Destory the main socket object
     socket_close(s);
 }
