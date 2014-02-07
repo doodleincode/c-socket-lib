@@ -2,6 +2,9 @@
  * Macros for creating classes and methods, and instantiating/releasing objects
  *
  * @author 	Daniel Hong
+ * 
+ * GNU GENERAL PUBLIC LICENSE Version 2. A LICENSE file should have
+ * accompanied this library.
  */
 
 #ifndef _DSH_CLASS_H_
