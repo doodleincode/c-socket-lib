@@ -2,6 +2,9 @@
  * Socket pseudo-class
  *
  * @author 	Daniel Hong
+ * 
+ * GNU GENERAL PUBLIC LICENSE Version 2. A LICENSE file should have
+ * accompanied this library.
  */
 
 #define NDEBUG
