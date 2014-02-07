@@ -23,7 +23,7 @@ static void _connect(Socket *this, const char *ip_addr, int port)
     
     if (connect(this->__sockfd__, this->__addrinfo__->ai_addr, 
                     this->__addrinfo__->ai_addrlen) == -1) {
-    	perror("connect() error");
+    	perror("Error connecting to the remote server.");
     	exit(1);
     }
     
@@ -38,7 +38,7 @@ static void _bind(Socket *this, const char *ip_addr, int port)
     
     if (bind(this->__sockfd__, this->__addrinfo__->ai_addr, 
                 this->__addrinfo__->ai_addrlen) == -1) {
-    	perror("bind() error");
+    	perror("Error binding the socket.");
     	exit(1);
     }
     
@@ -49,7 +49,7 @@ static void _bind(Socket *this, const char *ip_addr, int port)
 static void _listen(Socket *this, int max_queue)
 {
     if (listen(this->__sockfd__, max_queue) == -1) {
-    	perror("listen() error");
+    	perror("Error listening for connections.");
     	exit(1);
     }
 }
@@ -61,7 +61,7 @@ static Socket *_accept(Socket *this, ClientAddr *c)
     int client_fd;
     
     if ((client_fd = accept(this->__sockfd__, (struct sockaddr *)&client_addr, &addr_size)) == -1) {
-		perror("accept() error");
+		perror("Error accepting a remote connection.");
 		exit(1);
 	}
     
@@ -121,7 +121,7 @@ static void _create(Socket *this, int type, const char *ip_addr, int port)
     // We use getaddrinfo() because it correctly populates our structure 
     // regardless of IPv4 or IPv6
     if (getaddrinfo(ip_addr, sport, &(this->__addrinfo_hints__), &(this->__addrinfo__)) != 0) {
-    	perror("getaddrinfo() error");
+    	perror("Error getting address info.");
     	exit(1);
     }
     
@@ -129,7 +129,7 @@ static void _create(Socket *this, int type, const char *ip_addr, int port)
     if ((this->__sockfd__ = socket(this->__addrinfo__->ai_family, 
                                 this->__addrinfo__->ai_socktype, 
                                 this->__addrinfo__->ai_protocol)) == -1) {
-    	perror("socket() error");
+    	perror("Error creating a socket.");
     	exit(1);
     }
 }
@@ -198,4 +198,3 @@ void socket_close(Socket *s)
         release(s);
     }
 }
-
