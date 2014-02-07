@@ -4,9 +4,10 @@
  * This class models the Python socket API. If you can create a socket in Python,
  * you can just as easily create one using this class!
  *
- * View the sample client/server C files for an implementation of an echo server.
- *
  * @author 	Daniel Hong
+ * 
+ * GNU GENERAL PUBLIC LICENSE Version 2. A LICENSE file should have
+ * accompanied this library.
  */
 
 #ifndef _DSH_SOCKET_H_
