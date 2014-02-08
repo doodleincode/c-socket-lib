@@ -5,11 +5,6 @@ A socket library written in C that models after the Python socket API. This libr
 
 This class models the Python socket API. If you can create a socket in Python, you can just as easily create one using this class!
 
-Known issues
--------------
-
-The <code>obj->recv()</code> method is vulnerable to buffer overflow. Currently working on a fix for this.
-
 How to use this library
 -------------
 
@@ -20,6 +15,8 @@ Instantiate the socket object:
 Where <code>AF_INET</code> is the address family, and <code>SOCK_STREAM</code> is the socket type.
 
 Then either <code>connect</code> to act as a client, or <code>bind</code>, <code>listen</code>, and <code>accept</code> to act as a server.
+
+Use <code>send</code> and <code>recv</code> to send and receive data to/from the client/server.
 
 When you're done, destroy the object:
 
