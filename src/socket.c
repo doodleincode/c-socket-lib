@@ -85,19 +85,17 @@ static int _send(Socket *this, const char *str)
     return send(this->__sockfd__, str, strlen(str), 0);
 }
 
-// TODO This function is unsafe!!!
-// Need to figure out a better way to do it
 static int _recv(Socket *this, char *buff, int max_len)
 {
     int bytes_recv;
     char tmp[max_len];
     
     // Clear buffer
-    memset(&tmp, 0, max_len);
+    memset(tmp, 0, max_len);
     memset(buff, 0, max_len);
     
     bytes_recv = recv(this->__sockfd__, tmp, max_len, 0);
-    strncpy(buff, tmp, max_len);
+    snprintf(buff, max_len, "%s", tmp);
     
     return bytes_recv;
 }
@@ -140,7 +138,7 @@ static void _create(Socket *this, int type, const char *ip_addr, int port)
 // This is a "private" method
 static char *_inet_ntop(Socket *this, struct sockaddr *sa)
 {
-    static char str[39];
+    static char str[INET6_ADDRSTRLEN];
     
     switch (sa->sa_family) {
         case AF_INET:
