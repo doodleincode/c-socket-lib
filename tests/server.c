@@ -32,7 +32,13 @@ int main()
     printf("Client connected at %s:%d\n", client_addr.ip_addr, client_addr.port);
     
     while (1) {
+        memset(buff, 0, sizeof(buff));
         c->recv(c, buff, sizeof(buff));
+        
+        if (strlen(buff) == 0) {
+            break;
+        }
+        
         printf("Got: %s\n", buff);
         c->send(c, buff);
         printf("Sending: %s\n", buff);

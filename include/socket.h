@@ -16,7 +16,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
-#include "class.h"
+#include "../../c-functions/include/class.h"
 
 #define SOCKET_SERVER 1
 #define SOCKET_CLIENT 2
@@ -103,10 +103,12 @@ CLASS(Socket,
     int __family__;
     int __type__;
     int __proto__;
+    int *__client_sockfds__;   // We will keep track of the socket for each connected client
     struct addrinfo __addrinfo_hints__;
     struct addrinfo *__addrinfo__;
     
     FUNC(void, __create__, (struct Socket *, int, const char *, int));
+    FUNC(void, __exit_error__, (struct Socket *, const char *));
     FUNC(char *, __inet_ntop__, (struct Socket *, struct sockaddr *));
 );
 
