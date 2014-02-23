@@ -6,9 +6,6 @@
  * This program is licensed under the GNU GENERAL PUBLIC LICENSE Version 2.
  * A LICENSE file should have accompanied this program.
  */
-
-#define NDEBUG
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -111,7 +108,6 @@ static void _create(Socket *this, int type, const char *ip_addr, int port)
     // to make a few changes
     if (type == SOCKET_SERVER) {
         this->__addrinfo_hints__.ai_flags = AI_PASSIVE;
-        ip_addr = NULL;
     }
     
     // Get our addrinfo structure to use to create the socket

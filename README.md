@@ -8,6 +8,8 @@ This class models the Python socket API. If you can create a socket in Python, y
 How to use this library
 -------------
 
+This library depends on class.c from my [c-functions](https://github.com/hongmeister/c-functions) library.
+
 Instantiate the socket object:
 
     Socket *s = init_socket(AF_INET, SOCK_STREAM);

@@ -17,8 +17,10 @@ int main()
     // Instantiate a socket object
     Socket *s = init_socket(AF_INET, SOCK_STREAM);
     
-    // Bind the socket to IP 127.0.0.1 on port 12345
-    s->bind(s, "127.0.0.1", 12345);
+    // Bind the socket to localhost on port 12345
+    // To bind to a specific IP, replace NULL with the IP address,
+    // for example: "192.168.1.123"
+    s->bind(s, NULL, 12345);
     
     // Listen and allow up to five queued clients
     s->listen(s, 5);
