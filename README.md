@@ -1,7 +1,7 @@
 c-socket-lib
 ============
 
-A socket library written in C that models after the Python socket API. This library is only supported on Linux.
+A socket library for C that makes writing socket programs a cinch. The library models the simplicity of Python's socket library API. This library is only supported on Linux.
 
 This class models the Python socket API. If you can create a socket in Python, you can just as easily create one using this class!
 
