@@ -42,7 +42,7 @@ The server:
         int bytes;
     
         Socket *s = init_socket(AF_INET, SOCK_STREAM);
-        s->bind(s, "127.0.0.1", 12345);
+        s->bind(s, NULL, 12345);
         s->listen(s, 5);
         
         ClientAddr client_addr;
