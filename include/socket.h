@@ -95,21 +95,20 @@ CLASS(Socket,
      */
     FUNC(int, recv, (struct Socket *, char *, int));
     
-    // Below are private properties and methods
+    // Below are private members
     // These members should generally not be used by the end-user
     // and as such will not be documented
     
-    int __sockfd__;
-    int __family__;
-    int __type__;
-    int __proto__;
-    int *__client_sockfds__;   // We will keep track of the socket for each connected client
-    struct addrinfo __addrinfo_hints__;
-    struct addrinfo *__addrinfo__;
+    int _sockfd;
+    int _family;
+    int _type;
+    int _proto;
+    struct addrinfo _addrinfo_hints;
+    struct addrinfo *_addrinfo;
     
-    FUNC(void, __create__, (struct Socket *, int, const char *, int));
-    FUNC(void, __exit_error__, (struct Socket *, const char *));
-    FUNC(char *, __inet_ntop__, (struct Socket *, struct sockaddr *));
+    FUNC(void, _create, (struct Socket *, int, const char *, int));
+    FUNC(void, _exit_error, (struct Socket *, const char *));
+    FUNC(char *, _inet_ntop, (struct Socket *, struct sockaddr *));
 );
 
 /**
@@ -140,6 +139,20 @@ Socket *init_socket(int, int);
  * @param   Socket *    Pointer to a socket to close
  */
 void socket_close(Socket *);
+
+// -----------------------------------------------------------------------------
+//  Function pointers. These are private members and cannot be called directly
+// -----------------------------------------------------------------------------
+
+static void _connect_(Socket *, const char *, int);
+static void _bind_(Socket *, const char *, int);
+static void _listen_(Socket *, int);
+static Socket *_accept_(Socket *, ClientAddr *);
+static int _send_(Socket *, const char *);
+static int _recv_(Socket *, char *, int);
+static void _create_(Socket *, int, const char *, int);
+static void _exit_error_(Socket *, const char *);
+static char *_inet_ntop_(Socket *, struct sockaddr *);
 
 #endif /* _DH_SOCKET_H_ */
 
